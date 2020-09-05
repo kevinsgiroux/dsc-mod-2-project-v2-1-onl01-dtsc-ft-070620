@@ -1,160 +1,115 @@
+# Location, location, location: Is zipcode a strong predictor of home price? 
+## A multi-linear regression model for home price prediction
 
-# Module 2 Final Project
+**Author**: Kevin Giroux
 
-
-## Introduction
-
-In this lesson, we'll review all of the guidelines and specifications for the final project for Module 2.
-
-## Objectives
-You will be able to:
-* Describe all required aspects of the final project for Module 2
-* Describe all required deliverables
-* Describe what constitutes a successful project
-
-## Final Project Summary
-
-Another module down--you're almost half way there!
-
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-mod-2-project-v2-1/master/halfway-there.gif)
-
-All that remains in Module 2 is to put our newfound data science skills to use with a final project! You should expect this project to take between 20 and 25 hours of solid, focused effort. If you're done way quicker, go back and dig in deeper or try some of the optional "level up" suggestions. If you're worried that you're going to get to 30 hrs and still not even have the data imported, reach out to an instructor in Slack ASAP to get some help!
-
-## The Dataset
-
-For this project, you'll be working with the King County House Sales dataset. We've modified the dataset to make it a bit more fun and challenging.  The dataset can be found in the file `"kc_house_data.csv"`, in this repo.
-
-The description of the column names can be found in the column_names.md file in this repository. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions relating to what the data means.
-
-You'll clean, explore, and model this dataset with a multivariate linear regression to predict the sale price of houses as accurately as possible.
-
-## The Deliverables
-
-For online students, there will be five deliverables for this project (Note: On-campus students may have different requirements, please speak with your instructor):
-
-1. A well documented **Jupyter Notebook** containing any code you've written for this project and comments explaining it. This work will need to be pushed to your GitHub repository in order to submit your project.  
-2. An organized **README.md** file in the GitHub repository that describes the contents of the repository. This file should be the source of information for navigating through the repository.
-3. A short **Keynote/PowerPoint/Google Slides presentation** (delivered as a PDF export) giving a high-level overview of your methodology and recommendations for non-technical stakeholders. Make sure to also add and commit this pdf of your non-technical presentation to your repository with a file name of presentation.pdf.
-4. **[A Blog Post](https://github.com/learn-co-curriculum/dsc-welcome-blogging-v2-1)**	
-5. A **Video Walkthrough** of your non-technical presentation. Some common video recording tools used are Zoom, Quicktime, and Nimbus. After you record your presentation, publish it on a service like YouTube or Google Drive, you will need a link to the video to submit your project.
-
-Note: On-campus students may have different requirements, please speak with your instructor.
-
-### Jupyter Notebook Must-Haves
-
-For this project, your Jupyter Notebook should meet the following specifications:
-
-#### Organization/Code Cleanliness
-
-* The notebook should be well organized, easy to follow,  and code should be commented where appropriate.  
-    * Level Up: The notebook contains well-formatted, professional looking markdown cells explaining any substantial code.  All functions have docstrings that act as professional-quality documentation
-* The notebook is written for technical audiences with a way to both understand your approach and reproduce your results. The target audience for this deliverable is other data scientists looking to validate your findings.
-
-#### Visualizations & EDA
-
-* Your project contains at least 4 meaningful data visualizations, with corresponding interpretations. All visualizations are well labeled with axes labels, a title, and a legend (when appropriate)  
-* You pose at least 3 meaningful questions and answer them through EDA.  These questions should be well labeled and easy to identify inside the notebook.
-    * **Level Up**: Each question is clearly answered with a visualization that makes the answer easy to understand.   
-* Your notebook should contain 1 - 2 paragraphs briefly explaining your approach to this project.
-
-#### Model Quality/Approach
-
-* Your model should not include any predictors with p-values greater than .05.  
-* Your notebook shows an iterative approach to modeling, and details the parameters and results of the model at each iteration.  
-    * **Level Up**: Whenever necessary, you briefly explain the changes made from one iteration to the next, and why you made these choices.  
-* You provide at least 1 paragraph explaining your final model.   
-* You pick at least 3 coefficients from your final model and explain their impact on the price of a house in this dataset.   
+The contents of this repository detail an analysis of the Module 2 project. This analysis is detailed in hopes of making the work accessible and replicable.
 
 
-### Non-Technical Presentation Must-Haves
+### Introduction and Business problem:
 
-Another deliverable should be a Keynote, PowerPoint or Google Slides presentation delivered as a pdf file in your fork of this repository with the file name of `presentation.pdf` detailing the results of your project.  Your target audience is non-technical people interested in using your findings to maximize their profit when selling their home.
+This analysis was performed for a real estate investment firm, with the goal of helping them to accurately price and sell homes in their inventory, with the secondary goal of providing insight into how various other factors affect the sale price of home, with particular interest in the 'zipcode' variable. In other words, my primary goal was to optimize the model for price prediction, and my secondary goal was to assess the various coefficients in the final model for further insight.  
 
-Your presentation should:
-
-* Contain between 5 - 10 professional-quality slides.  
-    * **Level Up**: The slides should use visualizations whenever possible, and avoid walls of text.
-* Take no more than 5 minutes to present.   
-* Avoid technical jargon and explain the results in a clear, actionable way for non-technical audiences.   
-
-**_Based on the results of your models, your presentation should discuss at least two concrete features that highly influence housing prices._**
-
-### Blog Post Must-Haves
-
-Refer back to the [Blogging Guidelines](https://github.com/learn-co-curriculum/dsc-welcome-blogging-v2-1) for the technical requirements and blog ideas.
+From a peronal learning standpoint, I was curious whether or not the creation of dummy variables for each individual zipcode would enhance my model's prediction power or result in over-fitting my model to my training data.
 
 
-## The Process 
-The process for this project is identical to the process you followed for your module 1 project. We specified it again below as a refresher.
-(Note: On-campus students may have different processes, please speak with your instructor)
+### Data
+For this analysis, I used the King County House Sales dataset, which details the many physical attributes and the corresponding sale prices of a series of approximately 21k homes, all located in the Seattle, Washington area. See below for additional detail on the data:
 
-### 1. Getting Started
-
-Please start by reviewing this document. If you have any questions, please ask them in Slack ASAP so (a) we can answer the questions and (b) so we can update this repository to make it clearer.
-
-Be sure to let the instructor team know when you’ve started working on a project, either by reaching out over Slack or, if you are in a full-time or part-time cohort, by connecting with your Cohort Lead in your weekly 1:1. If you’re not sure who to reach out to, post in the #online-ds-sp-000 channel in Slack.
-
-Once you're done with this module, please start on the project. Do that by forking this repository, cloning it locally, and working in the student.ipynb file. Make sure to also add and commit a pdf of your presentation to the repository with a file name of `presentation.pdf`.
-
-### 2. The Project Review
-
-_Note: On-campus students may have different review processes, please speak with your instructor._
-
-> **When you start on the project, please also reach out to an instructor immediately to schedule your project review** (if you're not sure who to schedule with, please ask in Slack!)
-
-#### What to expect from the Project Review
-
-Project reviews are focused on preparing you for technical interviews. Treat project reviews as if they were technical interviews, in both attitude and technical presentation *(sometimes technical interviews will feel arbitrary or unfair - if you want to get the job, commenting on that is seldom a good choice)*.
-
-The project review is comprised of a 45 minute 1:1 session with one of the instructors. During your project review, be prepared to:
-
-#### 1. Deliver your PDF presentation to a non-technical stakeholder.
-In this phase of the review (~10 mins) your instructor will play the part of a non-technical stakeholder that you are presenting your findings to. The presentation  should not exceed 5 minutes, giving the "stakeholder" 5 minutes to ask questions.
-
-In the first half of the presentation (2-3 mins), you should summarize your methodology in a way that will be comprehensible to someone with no background in data science and that will increase their confidence in you and your findings. In the second half (the remaining 2-3 mins) you should summarize your findings and be ready to answer a couple of non-technical questions from the audience. The questions might relate to technical topics (sampling bias, confidence, etc) but will be asked in a non-technical way and need to be answered in a way that does not assume a background in statistics or machine learning. You can assume a smart, business stakeholder, with a non-quantitative college degree.
-
-#### 2. Go through the Jupyter Notebook, answering questions about how you made certain decisions. Be ready to explain things like:
-    * "How did you pick the question(s) that you did?"
-    * "Why are these questions important from a business perspective?"
-    * "How did you decide on the data cleaning options you performed?"
-    * "Why did you choose a given method or library?"
-    * "Why did you select those visualizations and what did you learn from each of them?"
-    * "Why did you pick those features as predictors?"
-    * "How would you interpret the results?"
-    * "How confident are you in the predictive quality of the results?"
-    * "What are some of the things that could cause the results to be wrong?"
-
-Think of the first phase of the review (~30 mins) as a technical boss reviewing your work and asking questions about it before green-lighting you to present to the business team. You should practice using the appropriate technical vocabulary to explain yourself. Don't be surprised if the instructor jumps around or sometimes cuts you off - there is a lot of ground to cover, so that may happen.
-
-If any requirements are missing or if significant gaps in understanding are uncovered, be prepared to do one or all of the following:
-* Perform additional data cleanup, visualization, feature selection, modeling and/or model validation
-* Submit an improved version
-* Meet again for another Project Review
-
-What won't happen:
-* You won't be yelled at, belittled, or scolded
-* You won't be put on the spot without support
-* There's nothing you can do to instantly fail or blow it
-
-**Please note: We need to receive the URL of your repository at least 24 hours before and please have the project finished at least 3 hours before your review so we can look at your materials in advance.**
+- Sale dates: all homes in the dataset were sold between 2014 and 2015
+- Sale price: mean sale price was approx. $540k, with an inner quartile range of $322k to $645k, and a maximum value of $7.7 million
+- Bedrooms: most homes have between 2 and 5 bedrooms, with outliers going up to 11 bedrooms
+- Bathrooms: most homes have between 1 and 4 bathrooms, including half and three-quarter bathrooms
+- Living sqft: the mean living square-footage for homes in our dataset is 1910 sqft, with an inner quartile range of 1430 to 2550 sqft, and a max value of 13,540 sqft
+- Lot sqft: the inner quartile range for lot sqare-footage was approx. 5000 to 10,000 sqft, with a maximum value of 1.65 million sqft
+- Floors: most homes have 1 or 2 floors, with a max value of 3.5 floors
+- Waterfront: dummy variable representing whether the home is on the water
+- View: values range from 0 to 4, representing the number of rooms in the home with a view
+- Condition: a 1 to 5 rating of the home's condition, approx. 60% are rated as 3, approx. 30% as 4, and approx 10% as 5
+- Grade: a more formal rating of the home's condition, based on local governement policy; ratings range from 1 to 13, with the vast majority of homes earning a score between 6 and 10
+- Above ground sqft: mean above ground square-footage of 1560 sqft, inner quartile range of 1190 to 2210 sqft, max value of 9410 sqft
+- Basement sqft: mode of 0, indicating most homes don't have basements
+- Year built: most homes were build between 1950 and 2000, but the full range extends from 1900 to 2015
+- Year renovated: mode of 0, indicating most homes have not been renovated
+- Zipcode: the zipcode location of each house
+- Lat + Long: the latitudinal and longitudinal coordinates for each house
+- Neighbors: the square-footages of the nearest 15 homes AND their respective lots, for each house
 
 
-## Submitting your Project
-
- You’re almost done! In order to submit your project for review, include the following links to your work in the corresponding fields on the right-hand side of Learn.
-
- 1. **GitHub Repo:** Now that you’ve completed your project in Jupyter Notebooks, push your work to GitHub and paste that link to the right. (If you need help doing so, review the resources [here](https://docs.google.com/spreadsheets/d/1CNGDhjcQZDRx2sWByd2v-mgUOjy13Cd_hQYVXPuzEDE/edit#gid=0).)
-_Reminder: Make sure to also add and commit a pdf of your non-technical presentation to the repository with a file name of presentation.pdf._
-2. **Blog Post:** Include a link to your blog post.
-3. **Record Walkthrough:** Include a link to your video walkthrough.
-
- Hit "I'm done" to wrap it up. You will receive an email in order to schedule your review with your instructor.
- 
- 
-## Grading Rubric
-Online students can find a PDF of the grading rubric for the project [here](https://github.com/learn-co-curriculum/dsc-mod-2-project-v2-1/blob/master/mod2_project_rubric.pdf). On-campus students may have different review processes, please speak with your instructor.
+## Methods
+- Descriptive analysis: a review of each feature included in the original dataset
+- Data cleaning: this primarily consisted of the removal of outliers from each of the features
+- Feature engineering: assessment of multicollinearity between independent variables, log-transformation and normalization of certain continuous variables, generation of dummy variables from categorical features
+- Model fitting: creation of train and test data sub-groups, both recursive and forward stepwise feature selection to identify optimal feature set, removal of non-statistically significant predictor variables from the model
+- Regression assumptions: analysis of CONTINUOUS independent variables to explore/confirm whether or not the assumptions of linearity, homoskedasticity, independence, and normality hold
+- Model validation and cross-validation: comparison of the calculated RMSE's of our model run off of training and testing data, respectively; k-folds cross-validation analysis
+- Further exploration: experimental removal of certain features to confirm the final model is in fact the best model
+- Exploration of select coefficients and their real-world implications
 
 
-## Summary
+## Results
 
-The end of module projects and project reviews are a critical part of the program. They give you a chance to both bring together all the skills you've learned into realistic projects and to practice key "business judgement" and communication skills that you otherwise might not get as much practice with.
+### Here are examples of how to embed images from your sub-folder
+
+
+#### Visual 1
+![graph1](./images/output_208_0.png)
+> The final model was able to predict the sale price of a home with a RMSE of approximately $100k.
+
+#### Visual 2
+![graph2](./images/output_209_0.png)
+> The difference between the Test and Training RMSE was generally within $3k, confirming the model's ability to predict home prices within $100k of the actual home price.
+
+#### Visual 3
+![graph3](./images/output_248_0.png)
+> The effect of living square-footage on the predicted price of a home.
+
+#### Visual 4
+![graph4](./images/output_261_0.png)
+> The effect of zip code on the predicted price of a home.
+
+#### Visual 5
+![graph5](./images/output_267_1.png)
+> The effect of (1) number of rooms with a view and dummy variables for (2) whether or not the house has been renovated and (3) whether or not the house has a basement on the predicted price of a home.
+
+
+## Conclusions:
+
+- My model predicts home sale price with a RMSE of approximately $99k (the standard deviation of the model's prediction around the actual sale price of a given home)
+- The difference between my training and test RMSE's is generally between $0 and $3000, indicating the model is as successful at predicting home prices based on testing data
+- Zipcode is a strong predictor of price with most zipcode dummy variables appearing as statistically significant predictors within our model
+- The predicted price boost from having 4 rooms with a view is almost double the predicted price boost of having 3 rooms with a view
+- Other factors significant to the prediction of home price, which the firm should keep in mind, include living square footage, lot square footage, the presence of a basement, home condition, number of bedrooms, number of floors, year built, and whether or not the home has had a renovation
+
+
+## Limitations & Next Steps
+
+1. Limitations:  Most of the features in the provided dataset had outliers, which, for the purposes of prediction accuracy, needed to be removed.  As a result the model is best suited to predict the prices of homes with the following characteristics: 
+
+- Price:  $0 to $1.3mm
+- Bedrooms:  0 to 6
+- Living space:  0 to 4500 square feet
+- Lot size:  0 to 17,500 square feet
+
+2. Next Steps:  
+- Derivative analysis of the "Impact of 'sqft_living' on predicted sale price" curve to determine what square-footage has the best "per sqare-foot" unit value (i.e. what living square-footage is the best deal)
+- Identify the square-footage that gets the best per-unit pricing for each zipcode; derive a list of target investment properties by filtering for homes of the right square-footage in the highest-value zipcodes that have low "Condition" and "Grade" scores
+- An examination of each zipcode variable individually, to ensure sufficient sample sizes have been collected and to confirm that the underlying assumptions of linear regression are upheld across the board
+
+### For further information
+Please review the narrative of our analysis in [our jupyter notebook](./student.ipynb) or review our [presentation](./presentation.pdf)
+
+For any additional questions, please contact **kevinsgiroux@gmail.com)
+
+
+##### Repository Structure:
+
+├── README.md                 <- The top-level README for reviewers of this project
+├── student.ipynb             <- narrative documentation of analysis in jupyter notebook
+├── presentation.pdf          <- pdf version of project presentation
+├── data                      <- raw data and column description files
+├── other                     <- other ancillary files included in the originally forked repo
+└── images
+    └── images                <- both sourced externally and generated from code
+
+```
