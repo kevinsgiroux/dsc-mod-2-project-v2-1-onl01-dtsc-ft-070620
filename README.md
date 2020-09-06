@@ -53,33 +53,34 @@ For this analysis, I used the King County House Sales dataset, which details the
 
 
 #### Visual 1
-![graph1](./images/output_208_0.png)
+![graph1](./images/output_216_0.png)
 > The final model was able to predict the sale price of a home with a RMSE of approximately $100k.
 
 #### Visual 2
-![graph2](./images/output_209_0.png)
+![graph2](./images/output_217_0.png)
 > The difference between the Test and Training RMSE was generally within $3k, confirming the model's ability to predict home prices within $100k of the actual home price.
 
 #### Visual 3
-![graph3](./images/output_248_0.png)
+![graph3](./images/output_284_0.png)
 > The effect of living square-footage on the predicted price of a home.
 
 #### Visual 4
-![graph4](./images/output_261_0.png)
+![graph4](./images/output_273_0.png)
 > The effect of zip code on the predicted price of a home.
 
 #### Visual 5
-![graph5](./images/output_267_1.png)
-> The effect of (1) number of rooms with a view and dummy variables for (2) whether or not the house has been renovated and (3) whether or not the house has a basement on the predicted price of a home.
+![graph5](./images/output_279_1.png)
+> The effect of number of times a home has been viewed on price.
 
 
 ## Conclusions:
 
 - My model predicts home sale price with a RMSE of approximately $99k (the standard deviation of the model's prediction around the actual sale price of a given home)
 - The difference between my training and test RMSE's is generally between $0 and $3000, indicating the model is as successful at predicting home prices based on testing data
-- Zipcode is a strong predictor of price with most zipcode dummy variables appearing as statistically significant predictors within our model
-- The predicted price boost from having 4 rooms with a view is almost double the predicted price boost of having 3 rooms with a view
-- Other factors significant to the prediction of home price, which the firm should keep in mind, include living square footage, lot square footage, the presence of a basement, home condition, number of bedrooms, number of floors, year built, and whether or not the home has had a renovation
+- Living square-footage and number of bedrooms are the strongest drivers of home value in the model.
+- Zipcode is also a strong predictor of price with 60 zipcode dummy variables appearing as statistically significant predictors within our model.
+- The predicted price boost from a home that has been viewed 4 times is almost double the predicted price boost of a home that was viewed 3 times.
+- Other factors significant to the prediction of home price, which the firm should keep in mind, include lot square footage, the presence of a basement, home condition, number of floors, year built, and whether or not the home has had a renovation
 
 
 ## Limitations & Next Steps
@@ -97,7 +98,7 @@ For this analysis, I used the King County House Sales dataset, which details the
 - An examination of each zipcode variable individually, to ensure sufficient sample sizes have been collected and to confirm that the underlying assumptions of linear regression are upheld across the board
 
 ### For further information
-Please review the narrative of our analysis in [our jupyter notebook](./student.ipynb) or review our [presentation](./presentation.pdf)
+Please review the narrative of our analysis in [our jupyter notebook](./student.ipynb) or review our [presentation](./presentation_vF.pdf)
 
 For any additional questions, please contact **kevinsgiroux@gmail.com)
 
